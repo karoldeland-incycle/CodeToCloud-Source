@@ -104,7 +104,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        
+      
+      - name: Login on Azure CLI
+        uses: azure/login@v1.1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+      
       - name: Deploy Infrastructure
         shell: pwsh
         env:
